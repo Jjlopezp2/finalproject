@@ -50,7 +50,7 @@ st.write("Versión de Python:", platform.python_version())
 
 model = cargar_modelo()
 
-st.title("Reconocimiento de Imágenes")
+st.title("Hola, te doy la bienvenida a MusicalMe")
 
 with open("OIG5.jpg", "rb") as f:
     b64 = base64.b64encode(f.read()).decode()
