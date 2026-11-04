@@ -1,6 +1,7 @@
-streamlit>=1.40
+streamlit==1.41.1
 tensorflow==2.15.0
 keras==2.15.0
 numpy<2
 pillow
 paho-mqtt>=1.6,<3
+
