@@ -10,9 +10,9 @@ from PIL import Image
 # ---------------------------------------------------------------
 # CONFIGURACIÓN
 # ---------------------------------------------------------------
-MQTT_BROKER = "broker.mqttgo.io"      # o "broker.hivemq.com" (el mismo que uses en Wokwi)
+MQTT_BROKER = "broker.mqttdashboard.com"      # o "broker.hivemq.com" (el mismo que uses en Wokwi)
 MQTT_PORT = 1883
-TOPIC_EMOCION = "mi_app/emociones"    # un solo topic: payload = FELIZ / TRISTE / OFF
+TOPIC_EMOCION = "myapp/MusicalMe"    # un solo topic: payload = FELIZ / TRISTE / OFF
 
 AUDIO_FELIZ = "feliz.mp3"             # pon aquí tus archivos de audio
 AUDIO_TRISTE = "triste.mp3"
@@ -58,7 +58,7 @@ st.html(f'<img src="data:image/jpeg;base64,{b64}" width="350">')
 
 with st.sidebar:
     st.subheader(
-        "Usando un modelo entrenado en teachable Machine puedes Usarlo en esta app para identificar"
+        "Te doy la bienvenida a tu cuarto nuevamente, toma tu foto para adaptar tu ilumiación y música de fondo"
     )
 
 img_file_buffer = st.camera_input("Toma una Foto")
@@ -83,7 +83,7 @@ if img_file_buffer is not None:
             f"Estás: {p_feliz * 100:.1f}% Feliz! "
             "Aquí hay una iluminación y un track que te pondrá en buenos ánimos"
         )
-        actualizar_leds("FELIZ")
+        actualizar_leds("up")
         st.audio(AUDIO_FELIZ, autoplay=True)
 
     elif p_triste > UMBRAL:
@@ -91,7 +91,7 @@ if img_file_buffer is not None:
             f"Estás: {p_triste * 100:.1f}% Triste. "
             "Aquí hay una música y una iluminación que te dejaran estar en un poco de paz"
         )
-        actualizar_leds("TRISTE")
+        actualizar_leds("down")
         st.audio(AUDIO_TRISTE, autoplay=True)
 
     else:
